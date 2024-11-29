@@ -39,12 +39,12 @@ on:
       - '"main"'
 
 env:
-  PROJECT_ID: 'my-project' # TODO: update to your Google Cloud project ID
-  GAR_LOCATION: 'us-central1' # TODO: update to your region
-  GKE_CLUSTER: 'cluster-1' # TODO: update to your cluster name
-  GKE_ZONE: 'us-central1-c' # TODO: update to your cluster zone
-  DEPLOYMENT_NAME: 'gke-test' # TODO: update to your deployment name
-  REPOSITORY: 'samples' # TODO: update to your Artifact Registry docker repository name
+  PROJECT_ID: 'skolvalarskurs7' # TODO: update to your Google Cloud project ID
+  GAR_LOCATION: 'europe-north1' # TODO: update to your region
+  GKE_CLUSTER: 'skolvalarskurs7-cluster' # TODO: update to your cluster name
+  GKE_ZONE: 'europe-north1' # TODO: update to your cluster zone
+  DEPLOYMENT_NAME: 'deploy-app' # TODO: update to your deployment name
+  REPOSITORY: 'eu.gcr.io/skolvalarskurs7' # TODO: update to your Artifact Registry docker repository name
   IMAGE: 'static-site'
   WORKLOAD_IDENTITY_PROVIDER: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider' # TODO: update to your workload identity provider
 
