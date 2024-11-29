@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: skolvalarskurs7-service
+spec:
+  type: LoadBalancer  # Use ClusterIP for internal services
+  selector:
+    app: skolvalarskurs7
+  ports:
+    - protocol: TCP
+      port: 80  # External port
+      targetPort: 8080  # Port your container is exposing
