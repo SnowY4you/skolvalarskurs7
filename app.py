@@ -8,6 +8,7 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
 import plotly.graph_objects as go
 import streamlit as st
+import socket
 
 # Load the data file
 file_path = 'School_choise.xlsm'
