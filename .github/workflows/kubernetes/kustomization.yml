@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - deployment.yml
+  - service.yml
+
+# You can define common labels, annotations, or other transformations here
+commonLabels:
+  app: skolvalarskurs7
+
+# Optional: You can add patches or other customization here
+patchesStrategicMerge:
+  - patches/deployment-patch.yml  # Example patch file
