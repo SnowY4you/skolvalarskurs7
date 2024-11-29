@@ -236,14 +236,6 @@ def update_content(selected_scores, selected_profiles):
 
 
 # Run the app
-# Define the layout and callbacks here...
-def find_free_port(start_port, max_port):
-    for port in range(start_port, max_port):
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            if s.connect_ex(('localhost', port)) != 0:
-                return port
-    raise RuntimeError("No free ports in the specified range.")
-
 if __name__ == '__main__':
     start_port = 8080
     max_port = 8090
