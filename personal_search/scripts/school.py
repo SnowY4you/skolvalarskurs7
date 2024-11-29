@@ -5,7 +5,7 @@ from folium.plugins import Search
 from geopy.distance import geodesic
 
 # Load the data file
-file_path = r'/my-app/School_choise.xlsm'
+file_path = r'/personal_search/data/School_choise.xlsm'
 df = pd.read_excel(file_path)
 
 # Set display option to show all columns
