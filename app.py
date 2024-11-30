@@ -7,11 +7,9 @@ from dash import Dash, dcc, html, dash_table
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
 import plotly.graph_objects as go
-import streamlit as st
-import socket
 
 # Load the data file
-file_path = 'School_choise.xlsm'
+file_path = 'data/School_choise_Noah.xlsm'
 df = pd.read_excel(file_path)
 
 # Set display option to show all columns
@@ -82,7 +80,6 @@ app.layout = html.Div(
                         html.H2('Val av skola inför årskurs 7'),
                         html.P('Här kan du kolla på grundskolar i Linköping och välja efter meritvärde, andel behöriga och profil. Informationen har hämtas från Skolverkets statistik 2023/2024.'),
                         html.P('Använd rullgardinsmenyerna för att välja olika värde och profiler för att filtrera skolorna. Tabellen och kartan kommer att uppdateras automatisk.'),
-
                     ],
                     style={'fontSize': 20, 'padding': '10px', 'backgroundColor': '#6693f5', 'width': 'calc(100% - 910px)', 'margin-left': '10px'}
                 )
@@ -115,13 +112,13 @@ app.layout = html.Div(
         )
     ]
 )
+
 # Helper function to rank schools based on multiple conditions
 def assign_points(dataframe, num_points):
     points = {}
     for i, row in dataframe.iterrows():
         points[row['Skola']] = num_points - i
     return points
-
 
 # Helper function to create the Folium map
 def generate_map(home_coords, schools_df):
@@ -162,7 +159,6 @@ def generate_map(home_coords, schools_df):
 
     return m._repr_html_()
 
-
 # Update the table and map based on the filter selection
 @app.callback(
     Output('table', 'data'),
@@ -185,8 +181,8 @@ def update_content(selected_scores, selected_profiles):
                 filtered_df = filtered_df[
                     filtered_df['Andel (%) elever behöriga till estetiskt program'] >= avg_estetiskt]
             elif score == 'avg_nat_tech':
-                filtered_df = filtered_df[filtered_df[
-                                              'Andel (%) elever behöriga till Naturvetenskapligt och tekniskt program'] >= avg_nat_tech]
+                filtered_df = filtered_df[
+                    filtered_df['Andel (%) elever behöriga till Naturvetenskapligt och tekniskt program'] >= avg_nat_tech]
             elif score == 'avg_betyg':
                 filtered_df = filtered_df[
                     filtered_df['Andel (%) elever som uppfyllt betygskriterierna i alla ämnen'] >= avg_betyg]
@@ -194,8 +190,7 @@ def update_content(selected_scores, selected_profiles):
                 filtered_df = filtered_df[filtered_df['Genomsnittligt meritvärde (17 ämnen)'] >= avg_merit]
 
     if selected_profiles:
-        profile_filter = filtered_df['Profil_Inriktning'].str.contains('|'.join(selected_profiles), case=False,
-                                                                       na=False)
+        profile_filter = filtered_df['Profil_Inriktning'].str.contains('|'.join(selected_profiles), case=False, na=False)
         filtered_df = filtered_df[profile_filter]
 
     # Filter out rows with NaN values in 'Latitude' and 'Longitude'
@@ -236,8 +231,6 @@ def update_content(selected_scores, selected_profiles):
 
     return sorted_schools[columns_to_display].to_dict('records'), table_columns, map_html
 
-
 # Run the app
 if __name__ == '__main__':
     app.run_server(debug=True)
-
