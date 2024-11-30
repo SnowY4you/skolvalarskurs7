@@ -250,5 +250,5 @@ def find_free_port(start_port=8080, max_port=8100):
 if __name__ == '__main__':
     port = find_free_port()
     print(f"Starting server on port {port}")
-    app.run_server(debug=False, host='0.0.0.0', port=port)
+    app.run_server(debug=False, host='0.0.0.0')
 
