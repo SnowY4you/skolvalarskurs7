@@ -9,7 +9,7 @@ from dash.dependencies import Input, Output, State
 import plotly.graph_objects as go
 
 # Load the data file
-file_path = 'data/School_choise_Noah.xlsm'
+file_path = 'School_chois.xlsm'
 df = pd.read_excel(file_path)
 
 # Set display option to show all columns
