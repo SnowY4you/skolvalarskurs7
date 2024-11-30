@@ -6,6 +6,7 @@ from geopy.distance import geodesic
 from dash import Dash, dcc, html, dash_table
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
+import os
 
 # Load the data file
 file_path = 'School_choise.xlsm'
@@ -232,4 +233,6 @@ def update_content(selected_scores, selected_profiles):
 
 # Run the app
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    port = int(os.environ.get('PORT', 8050))
+    app.run_server(debug=True, host='0.0.0.0', port=port)
+
