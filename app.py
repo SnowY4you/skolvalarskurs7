@@ -8,7 +8,7 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
 
 # Load the data file
-file_path = 'School_chois.xlsm'
+file_path = 'School_choise.xlsm'
 df = pd.read_excel(file_path)
 
 # Set display option to show all columns
